@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 style="text-align:center">Posts</h1>
+{% for post in posts %}
+<a href="{{ url_for('views.post_detail', post_id=post['id']) }}">
+    <h2>{{ post['title'] }}</h2>
+</a>
+<h2>{{ post['data'] }}</h2>
+<span class="badge badge-primary">{{ post['date'] }}</span>
+{% endfor %}
+{% endblock %}

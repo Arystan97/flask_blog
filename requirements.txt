@@ -1,0 +1,11 @@
+flask
+flask-login
+flask-sqlalchemy
+flask-migrate
+psycopg2
+psycopg2.extras
+logging
+werkzeug.security
+logging.handlers
+flask_socketio
+flask_change_password

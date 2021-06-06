@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div style="text-align: center;">
+    <h2>{{ post['title'] }}</h2>
+    <p>{{ post['data'] }}</p>
+</div>
+<p style="text-align: right">Published by {{ user['first_name'] }}</p>
+<div>
+    <img src="https://st.depositphotos.com/1054619/4043/v/600/depositphotos_40435245-stock-illustration-like-button.jpg" width="100" onClick="Like()">
+    <p style="display:inline-block"><a id="clicks"></a></p>
+    <hr>
+</div>
+<br/>
+<br/>
+<br/>
+<h1 align="center">Comments</h1>
+{% for comment in comments %}
+<h2>{{ user['first_name'] }}</h2>
+<h2>{{ comment['data'] }}</h2>
+<span class="badge badge-primary">{{ comment['date'] }}</span>
+{% endfor %}
+<form method="POST">
+  <textarea name="data" id="data" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Add Comment</button>
+  </div>
+</form>
+<script type="text/javascript">
+    function Like() {
+  if (typeof(Storage) !== "undefined") {
+    if (localStorage.clickcount) {
+      localStorage.clickcount = Number(localStorage.clickcount)+1;
+    } else {
+      localStorage.clickcount = 1;
+    }
+    document.getElementById("clicks").innerHTML = localStorage.clickcount;
+  } else {
+    document.getElementById("clicks").innerHTML = "Sorry, your browser does not support web storage...";
+  }
+}
+    </script>
+{% endblock %}
